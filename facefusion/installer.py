@@ -57,7 +57,7 @@ def run(program : ArgumentParser) -> None:
 		onnxruntime = answers['onnxruntime']
 		onnxruntime_name, onnxruntime_version = ONNXRUNTIMES[onnxruntime]
 
-		subprocess.call([ 'pip', 'install', '-r', 'requirements.txt', '--force-reinstall' ])
+		#subprocess.call([ 'pip', 'install', '-r', 'requirements.txt', '--force-reinstall' ])
 		if onnxruntime == 'rocm-5.4.2' or onnxruntime == 'rocm-5.6':
 			if python_id in [ 'cp39', 'cp310', 'cp311' ]:
 				rocm_version = onnxruntime.replace('-', '')
@@ -75,3 +75,4 @@ def run(program : ArgumentParser) -> None:
 				subprocess.call([ 'pip', 'install', onnxruntime_name + '==' + onnxruntime_version, '--extra-index-url', 'https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple', '--force-reinstall' ])
 			else:
 				subprocess.call([ 'pip', 'install', onnxruntime_name + '==' + onnxruntime_version, '--force-reinstall' ])
+		subprocess.call([ 'pip', 'install', '-r', 'requirements.txt', '--force-reinstall' ])
